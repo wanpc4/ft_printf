@@ -16,6 +16,9 @@ CFLAGS = -Wall -Wextra -Werror -I.
 
 REMOVE = rm -rf
 
+SOURCES = ft_printf.c /
+			
+
 LIBFT = ./Libft/
 
 LIBFT_A = ./Libft/libft.a
