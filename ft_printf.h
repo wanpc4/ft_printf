@@ -21,5 +21,6 @@
 #include <stdarg.h> //va_list,va_start,va_end,va_arg
 #include <stdint.h>
 int ft_printf(const char *format, ...);
-void fmt_specifier(va_list *args, const char *data, unsigned int *print);
+void fmt_specifier(va_list *args, const char data);
+int ft_print_character(int c);
 #endif

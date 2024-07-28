@@ -12,29 +12,32 @@
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format)
+int ft_printf(const char *format, ...)
 {
     
 }
 
-void fmt_specifier(va_list *args, const char *data, unsigned int print)
+void fmt_specifier(va_list *args, const char data)
 {
-    if (*data == 'c')
-        //If it's character
-    else if (*data == 's')
-        //If it's string
-    else if (*data == 'i')
+    int count;
+
+    count = 0;
+    if (data == 'c')
+        count += ft_print_character(va_arg(*args, int));
+    else if (data == 's')
+        //If it's a string
+    else if (data == 'i')
         //If it's a number
-    else if (*data == 'p')
+    else if (data == 'p')
         //If it's a pointer
-    else if (*data == 'u')
+    else if (data == 'u')
         //If it's unsigned
-    else if (*data == 'x')
+    else if (data == 'x')
         //If it's a hexadecimal number in lowercase
-    else if (*data == 'X')
+    else if (data == 'X')
         //If it's a hexadecimal number in uppercase
-    else if (*data == '%')
-        *print += write(1,"%",1);
+    else if (data == '%')
+        count += write(1,"%",1);
         // while (data)
         // {
         //     write(1,"%",1);
@@ -59,4 +62,10 @@ void fmt_specifier(va_list *args, const char *data, unsigned int print)
             Modified Version:
             This version will continuously write % to the standard output, likely filling up the output buffer and potentially causing the program to hang or crash.
         */
+}
+
+int ft_print_character(int c)
+{
+    write(1,&c,1);
+    return (1);
 }
