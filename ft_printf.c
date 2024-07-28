@@ -17,17 +17,20 @@ int ft_printf(const char *format, ...)
     
 }
 
-void fmt_specifier(va_list *args, const char data)
+void ft_specifier(va_list *args, const char data)
 {
     int count;
 
     count = 0;
     if (data == 'c')
+        //If it's a character
         count += ft_print_character(va_arg(*args, int));
     else if (data == 's')
         //If it's a string
-    else if (data == 'i')
+        count += ft_print_string(va_arg(*args, char *));
+    else if (data == 'i' || data == 'd')
         //If it's a number
+        count += ft_print_number(va_arg(*args, int));
     else if (data == 'p')
         //If it's a pointer
     else if (data == 'u')
@@ -62,6 +65,7 @@ void fmt_specifier(va_list *args, const char data)
             Modified Version:
             This version will continuously write % to the standard output, likely filling up the output buffer and potentially causing the program to hang or crash.
         */
+       return (count);
 }
 
 int ft_print_character(int c)
