@@ -22,7 +22,23 @@
 #include <stdint.h>
 int ft_printf(const char *format, ...);
 void ft_specifier(va_list *args, const char data);
+/*
+    printf utilities
+*/
 int ft_print_character(int c);
 int ft_print_string(char *str);
 int ft_print_number(int number);
+
+/*
+    print unsigned
+*/
+int ft_length_number(unsigned int num3);
+int ft_uitoa(unsigned int num2);
+int ft_print_unsigned(unsigned int num1);
+
+/*
+    print pointer
+*/
+int ft_pointer_length(uintptr_t num);
+
 #endif
