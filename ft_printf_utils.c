@@ -1,5 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wwan-ab- <wwan-ab-@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/01 22:23:50 by wwan-ab-          #+#    #+#             */
+/*   Updated: 2024/08/01 22:25:13 by wwan-ab-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "ft_printf.h"
 /*
     To count how many characters in that string and display each character one by one, forming an array of character (string).
 
@@ -9,31 +20,31 @@
 */
 int ft_print_string(char *str)
 {
-    if (str == NULL)
-    {
-        write(1, "(null)", 6);
-        return (6);
-    }
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 
-    int count;
+	int count;
 
-    count = 0;
-    while (str[count])
-    {
-        write(1, &str[count], 1);
-        count++;
-    }
-    return (count);
+	count = 0;
+	while (str[count])
+	{
+		write(1, &str[count], 1);
+		count++;
+	}
+	return (count);
 }
 
 int ft_print_number(int number)
 {
-    int length;
-    char *num_character;
+	int		length;
+	char	*num_character;
 
-    length = 0;
-    num_character = ft_itoa(number); //Integer to ASCII | Use malloc
-    length = ft_print_string(number);
-    free(num_character); //Deallocate memory
-    return (length);
+	length = 0;
+	num_character = ft_itoa(number); //Integer to ASCII | Use malloc
+	length = ft_print_string(number);
+	free(num_character); //Deallocate memory
+	return (length);
 }

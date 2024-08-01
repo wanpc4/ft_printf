@@ -17,28 +17,32 @@ int ft_printf(const char *format, ...)
     
 }
 
-void ft_specifier(va_list *args, const char data)
+void ft_specifier(va_list args, const char data)
 {
     int count;
 
     count = 0;
     if (data == 'c')
         //If it's a character
-        count += ft_print_character(va_arg(*args, int));
+        count += ft_print_character(va_arg(args, int));
     else if (data == 's')
         //If it's a string
-        count += ft_print_string(va_arg(*args, char *));
+        count += ft_print_string(va_arg(args, char *));
     else if (data == 'i' || data == 'd')
         //If it's a number
-        count += ft_print_number(va_arg(*args, int));
+        count += ft_print_number(va_arg(args, int));
     else if (data == 'p')
         //If it's a pointer
+        count += ft_print_pointer(va_arg(args, unsigned long long));
     else if (data == 'u')
         //If it's unsigned
+        count += ft_print_unsigned(va_arg(args, unsigned int));
     else if (data == 'x')
         //If it's a hexadecimal number in lowercase
+        count += ft_print_hex(va_arg(args, unsigned int), data);
     else if (data == 'X')
         //If it's a hexadecimal number in uppercase
+        count += ft_print_hex(va_arg(args, unsigned int), data);
     else if (data == '%')
         count += write(1,"%",1);
         // while (data)

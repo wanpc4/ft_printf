@@ -40,5 +40,14 @@ int ft_print_unsigned(unsigned int num1);
     print pointer
 */
 int ft_pointer_length(uintptr_t num);
+void ft_put_pointer(uintptr_t num);
+int ft_print_pointer(unsigned long long pointer);
+
+/*
+    print hexadecimal
+*/
+int ft_hex_length(unsigned int num);
+void ft_put_hex(unsigned int num, const char format);
+int ft_print_hex(unsigned int num, const char format);
 
 #endif
