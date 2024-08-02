@@ -16,14 +16,17 @@ CFLAGS = -Wall -Wextra -Werror -I.
 
 REMOVE = rm -rf
 
-SOURCES = ft_printf.c /
-			
+SOURCES = ft_printf.c \
+		  ft_print_hex.c \
+		  ft_print_ptr.c \
+		  ft_printf_utils.c \
+		  ft_print_unsigned.c \
 
 LIBFT = ./Libft/
 
-LIBFT_A = ./Libft/libft.a
+LIBFT_A = $(LIBFT)libft.a
 
-OBJECTS = $(SRCS:.c=.o)
+OBJECTS = $(SOURCES:.c=.o)
 
 NAME = libftprintf.a
 
@@ -33,9 +36,9 @@ LIBC = ar rcs
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 $(NAME): $(OBJECTS)
-	make -C (LIBFT)
+	make -C $(LIBFT)
 	cp $(LIBFT_A) $(NAME)
-	LIBC $(NAME) $(OBJECTS)
+	$(LIBC) $(NAME) $(OBJECTS)
 
 all: $(NAME)
 
@@ -43,8 +46,9 @@ clean:
 	make clean -C $(LIBFT)
 	$(REMOVE) $(OBJECTS)
 
-fclean:
-	$(REMOVE) $(NAME) $(LIBFT_A)
+fclean: clean
+	$(REMOVE) $(NAME) 
+	$(REMOVE) $(LIBFT_A)
 
 re: fclean all
 

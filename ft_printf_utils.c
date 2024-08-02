@@ -44,7 +44,7 @@ int ft_print_number(int number)
 
 	length = 0;
 	num_character = ft_itoa(number); //Integer to ASCII | Use malloc
-	length = ft_print_string(number);
+	length = ft_print_string(num_character);
 	free(num_character); //Deallocate memory
 	return (length);
 }

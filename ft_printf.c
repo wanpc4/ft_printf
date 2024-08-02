@@ -14,34 +14,46 @@
 
 int ft_printf(const char *format, ...)
 {
-    
+    int     length;
+    int     i;
+    va_list args;
+
+    length = 0;
+    i = 0;
+    va_start(args, format);
+    while(format[i])
+    {
+        if (format[i] == '%')
+        {
+            length += ft_specifier(args, format[i + 1]);
+            i++;
+        }
+        else
+            length += ft_print_character(format[i]);
+        i++;
+    }
+    va_end(args);
+    return (length);
 }
 
-void ft_specifier(va_list args, const char data)
+int ft_specifier(va_list args, const char data)
 {
     int count;
 
     count = 0;
     if (data == 'c')
-        //If it's a character
         count += ft_print_character(va_arg(args, int));
     else if (data == 's')
-        //If it's a string
         count += ft_print_string(va_arg(args, char *));
     else if (data == 'i' || data == 'd')
-        //If it's a number
         count += ft_print_number(va_arg(args, int));
     else if (data == 'p')
-        //If it's a pointer
         count += ft_print_pointer(va_arg(args, unsigned long long));
     else if (data == 'u')
-        //If it's unsigned
         count += ft_print_unsigned(va_arg(args, unsigned int));
     else if (data == 'x')
-        //If it's a hexadecimal number in lowercase
         count += ft_print_hex(va_arg(args, unsigned int), data);
     else if (data == 'X')
-        //If it's a hexadecimal number in uppercase
         count += ft_print_hex(va_arg(args, unsigned int), data);
     else if (data == '%')
         count += write(1,"%",1);
@@ -69,7 +81,7 @@ void ft_specifier(va_list args, const char data)
             Modified Version:
             This version will continuously write % to the standard output, likely filling up the output buffer and potentially causing the program to hang or crash.
         */
-       return (count);
+    return (count);
 }
 
 int ft_print_character(int c)

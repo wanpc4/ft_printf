@@ -29,7 +29,7 @@ int ft_length_number(unsigned int num)
 /*
     To converts an unsigned integer to a string representation.
 */
-int ft_uitoa(unsigned int num)
+char *ft_uitoa(unsigned int num)
 {
 	int		length;
 	char	*number;
@@ -45,6 +45,7 @@ int ft_uitoa(unsigned int num)
 		num = num / 10;
 		length--;
 	}
+	return (number);
 }
 /*
     To print an unsigned integer by converting it to a string and then printing the string.
@@ -59,7 +60,7 @@ int ft_print_unsigned(unsigned int num)
 		count += write(1, "0", 1);
 	else
 	{
-		number = ft_uitoa(num);
+		number = ft_uitoa(num); //Allocate memory
 		count += ft_print_string(number);
 		free(number); //Deallocate memory
 	}
