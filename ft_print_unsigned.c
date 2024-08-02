@@ -31,18 +31,29 @@ int ft_length_number(unsigned int num)
 */
 char *ft_uitoa(unsigned int num)
 {
-	int		length;
-	char	*number;
+	int				length;
+	char			*number;
+	unsigned int	n;
 
+	if (num == 0)
+	{
+		number = (char *)malloc(sizeof(char) * 2);
+		if (!number)
+			return (NULL);
+		number[0] = '0';
+		number[1] = '\0';
+		return (number);
+	}
 	length = ft_length_number(num);
 	number = (char *)malloc(sizeof(char) * (length + 1)); //Allocate memory
 	if (!number)
 		return (0);
 	number[length] = '\0';
-	while (number != 0)
+	n = num;
+	while (n > 0)
 	{
-		number[length - 1] = num % 10 + 48;
-		num = num / 10;
+		number[length - 1] = n % 10 + '0';
+		n = n / 10;
 		length--;
 	}
 	return (number);
@@ -61,8 +72,11 @@ int ft_print_unsigned(unsigned int num)
 	else
 	{
 		number = ft_uitoa(num); //Allocate memory
-		count += ft_print_string(number);
-		free(number); //Deallocate memory
+		if (number)
+		{
+			count += write(1, number, ft_length_number(num));
+			free(number); //Deallocate memory
+		}
 	}
 	return (count);
 }
