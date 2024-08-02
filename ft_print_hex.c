@@ -6,7 +6,7 @@
 /*   By: wwan-ab- <wwan-ab-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 22:13:18 by wwan-ab-          #+#    #+#             */
-/*   Updated: 2024/08/01 22:15:45 by wwan-ab-         ###   ########.fr       */
+/*   Updated: 2024/08/02 18:00:52 by wwan-ab-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 /*
     To count the length of hexadecimal digits.
 */
-int ft_hex_length(unsigned int num)
+int	ft_hex_length(unsigned int num)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (num != 0)
@@ -30,7 +30,7 @@ int ft_hex_length(unsigned int num)
 /*
     To dislay hexadecimal digits.
 */
-void ft_put_hex(unsigned int num, const char format)
+void	ft_put_hex(unsigned int num, const char format)
 {
 	if (num >= 16)
 	{
@@ -54,11 +54,11 @@ void ft_put_hex(unsigned int num, const char format)
 /*
     To call out functions ft_hexa_length() and ft_put_hexa()
 */
-int ft_print_hex(unsigned int num, const char format)
+int	ft_print_hex(unsigned int num, const char format)
 {
 	if (num == 0)
-		return (write(1, "0", 1)); //To display 0
+		return (write(1, "0", 1));
 	else
-		ft_put_hex(num, format); //To display headecimal
-	return (ft_hex_length(num)); //To return the length of hexadecimal.
+		ft_put_hex(num, format);
+	return (ft_hex_length(num));
 }

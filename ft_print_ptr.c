@@ -6,7 +6,7 @@
 /*   By: wwan-ab- <wwan-ab-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 22:17:52 by wwan-ab-          #+#    #+#             */
-/*   Updated: 2024/08/01 22:21:04 by wwan-ab-         ###   ########.fr       */
+/*   Updated: 2024/08/02 18:03:16 by wwan-ab-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 /*
     To calculate the length of the pointer.
 */
-int ft_pointer_length(uintptr_t num)
+int	ft_pointer_length(uintptr_t num)
 {
-	int count;
+	int	count;
 
 	count = 0;
-	while(num != 0)
+	while (num != 0)
 	{
 		count++;
 		num = num / 16;
@@ -29,7 +29,8 @@ int ft_pointer_length(uintptr_t num)
 /*
     To identify which character to put to form the string.
 */
-void ft_put_pointer(uintptr_t num)
+
+void	ft_put_pointer(uintptr_t num)
 {
 	if (num >= 16)
 	{
@@ -51,12 +52,12 @@ void ft_put_pointer(uintptr_t num)
 /*
     To display the pointer
 */
-int ft_print_pointer(unsigned long long pointer)
+
+int	ft_print_pointer(unsigned long long pointer)
 {
-	int count;
+	int	count;
 
 	count = 0;
-
 	count += write(1, "0x", 2);
 	if (pointer == 0)
 		count += write(1, "0", 1);

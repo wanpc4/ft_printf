@@ -6,46 +6,36 @@
 /*   By: wwan-ab- <wwan-ab-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 22:21:16 by wwan-ab-          #+#    #+#             */
-/*   Updated: 2024/08/01 22:23:31 by wwan-ab-         ###   ########.fr       */
+/*   Updated: 2024/08/02 18:10:06 by wwan-ab-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-    To count how many characters in that unsigned integer "num". For example, "678" so the total characters are 3. Makes sense right?
-*/
-int ft_length_number(unsigned int num)
+
+int	ft_length_number(unsigned int num)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (num != 0)
 	{
 		count++;
-		num = num / 10; //Remove the least significant digit.
+		num = num / 10;
 	}
 	return (count);
 }
 /*
     To converts an unsigned integer to a string representation.
 */
-char *ft_uitoa(unsigned int num)
+
+char	*ft_uitoa(unsigned int num)
 {
 	int				length;
 	char			*number;
 	unsigned int	n;
 
-	if (num == 0)
-	{
-		number = (char *)malloc(sizeof(char) * 2);
-		if (!number)
-			return (NULL);
-		number[0] = '0';
-		number[1] = '\0';
-		return (number);
-	}
 	length = ft_length_number(num);
-	number = (char *)malloc(sizeof(char) * (length + 1)); //Allocate memory
+	number = (char *)malloc(sizeof(char) * (length + 1));
 	if (!number)
 		return (0);
 	number[length] = '\0';
@@ -59,23 +49,24 @@ char *ft_uitoa(unsigned int num)
 	return (number);
 }
 /*
-    To print an unsigned integer by converting it to a string and then printing the string.
+    To print an unsigned integer.
 */
-int ft_print_unsigned(unsigned int num)
+
+int	ft_print_unsigned(unsigned int num)
 {
 	int		count;
-    char	*number;
+	char	*number;
 
 	count = 0;
 	if (num == 0)
 		count += write(1, "0", 1);
 	else
 	{
-		number = ft_uitoa(num); //Allocate memory
+		number = ft_uitoa(num);
 		if (number)
 		{
 			count += write(1, number, ft_length_number(num));
-			free(number); //Deallocate memory
+			free(number);
 		}
 	}
 	return (count);
