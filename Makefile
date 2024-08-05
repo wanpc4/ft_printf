@@ -32,15 +32,15 @@ NAME = libftprintf.a
 
 LIBC = ar rcs
 
-%o: %.c
-	$(CC) -c $(CFLAGS) -o $@ $<
+all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	make -C $(LIBFT)
 	cp $(LIBFT_A) $(NAME)
 	$(LIBC) $(NAME) $(OBJECTS)
 
-all: $(NAME)
+%o: %.c
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
 	make clean -C $(LIBFT)

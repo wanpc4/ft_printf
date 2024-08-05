@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-    To calculate the length of the pointer.
-*/
+
 int	ft_pointer_length(uintptr_t num)
 {
 	int	count;
 
 	count = 0;
+	if (num == 0)
+		return (1);
 	while (num != 0)
 	{
 		count++;
@@ -26,9 +26,6 @@ int	ft_pointer_length(uintptr_t num)
 	}
 	return (count);
 }
-/*
-    To identify which character to put to form the string.
-*/
 
 void	ft_put_pointer(uintptr_t num)
 {
@@ -40,18 +37,11 @@ void	ft_put_pointer(uintptr_t num)
 	else
 	{
 		if (num <= 9)
-		{
 			ft_putchar_fd((num + '0'), 1);
-		}
 		else
-		{
 			ft_putchar_fd((num - 10 + 'a'), 1);
-		}
 	}
 }
-/*
-    To display the pointer
-*/
 
 int	ft_print_pointer(unsigned long long pointer)
 {

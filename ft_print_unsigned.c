@@ -24,9 +24,6 @@ int	ft_length_number(unsigned int num)
 	}
 	return (count);
 }
-/*
-    To converts an unsigned integer to a string representation.
-*/
 
 char	*ft_uitoa(unsigned int num)
 {
@@ -48,9 +45,6 @@ char	*ft_uitoa(unsigned int num)
 	}
 	return (number);
 }
-/*
-    To print an unsigned integer.
-*/
 
 int	ft_print_unsigned(unsigned int num)
 {

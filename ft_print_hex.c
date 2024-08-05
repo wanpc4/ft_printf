@@ -11,9 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-    To count the length of hexadecimal digits.
-*/
+
 int	ft_hex_length(unsigned int num)
 {
 	int	count;
@@ -27,9 +25,6 @@ int	ft_hex_length(unsigned int num)
 	return (count);
 }
 
-/*
-    To dislay hexadecimal digits.
-*/
 void	ft_put_hex(unsigned int num, const char format)
 {
 	if (num >= 16)
@@ -51,9 +46,6 @@ void	ft_put_hex(unsigned int num, const char format)
 	}
 }
 
-/*
-    To call out functions ft_hexa_length() and ft_put_hexa()
-*/
 int	ft_print_hex(unsigned int num, const char format)
 {
 	if (num == 0)

@@ -1,4 +1,8 @@
+.DS_Store
 *.o
 *.a
+*.out
+*.swp
+*.lib
 printfTester
-ft_printf_tester.c
+tester

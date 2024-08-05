@@ -57,30 +57,6 @@ int ft_specifier(va_list args, const char data)
         count += ft_print_hex(va_arg(args, unsigned int), data);
     else if (data == '%')
         count += write(1,"%",1);
-        // while (data)
-        // {
-        //     write(1,"%",1);
-        //     print++;
-        // }
-        /*
-            ChatGPT answers:
-            
-            Behavior of print Variable:
-            
-            Original Version:
-            The print variable is incremented once for each % character written.
-            
-            Modified Version:
-            The print variable is incremented indefinitely because of the infinite loop. This will likely cause undefined behavior or a crash due to an infinite write operation.
-            
-            Effect on the Program:
-            
-            Original Version:
-            This implementation is correct and will write a single % to the standard output and update the print variable.
-            
-            Modified Version:
-            This version will continuously write % to the standard output, likely filling up the output buffer and potentially causing the program to hang or crash.
-        */
     return (count);
 }
 
